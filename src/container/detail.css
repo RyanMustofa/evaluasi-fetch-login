@@ -1,0 +1,11 @@
+.header1 {
+    font-family: sans-serif;
+}
+.authoor1 {
+    display: flex;
+    justify-content: space-between;
+}
+.gambar-l {
+    width: 70%;
+    height: 70%;
+}
