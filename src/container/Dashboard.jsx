@@ -32,14 +32,6 @@ class Dashboard extends React.Component {
                 });
             });
     }
-    handleSearch = e => {
-        this.setState(
-            {
-                search: e.target.value
-            },
-            () => console.log(this.state.search)
-        );
-    };
     handleClick = (title, i) => {
         this.props.history.push(`/dashboard/${i}`);
     };
@@ -52,9 +44,6 @@ class Dashboard extends React.Component {
             return <Redirect to="/" />;
         }
         const { datas, search } = this.state;
-        const filterSearch = datas.filter(datas =>
-            datas.title.toLowerCase().includes(search.toLowerCase())
-        );
         if (this.state.loading === true) {
             return (
                 <center>
@@ -96,28 +85,7 @@ class Dashboard extends React.Component {
                     </nav>
                 </div>
 
-                <div class="container">
-                    <nav>
-                        <div class="nav-wrapper white">
-                            <div class="input-field">
-                                <input
-                                    id="search"
-                                    name="search"
-                                    onChange={this.handleSearch}
-                                    type="search"
-                                    required
-                                />
-                                <label class="label-icon" for="search">
-                                    <i class="material-icons black-text">
-                                        search
-                                    </i>
-                                </label>
-                                <i class="material-icons black-text">close</i>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                {filterSearch.map((data, i) => {
+                {datas.map((data, i) => {
                     return (
                         <Props
                             data={data}
